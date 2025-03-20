@@ -1,15 +1,18 @@
 {
   "languages_2Letters": {
     "km": "ខ្មែរ",
-    "en": "English"
+    "en": "English",
+    "my": "ဗမာစာ"
   },
   "rtlLanguages": [],
   "langCodeMapping": {
     "khm": "km",
-    "eng": "en"
+    "eng": "en",
+    "bur": "my"
   },
   "langFontMapping": {
     "en": "font-inter",
-    "km": "font-kantumruypro"
+    "km": "font-kantumruypro",
+    "my": "font-noto-sans-my"
   }
 }
