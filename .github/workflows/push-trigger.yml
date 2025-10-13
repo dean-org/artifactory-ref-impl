@@ -15,28 +15,8 @@ on:
       - tf_myanmar
       
   
-jobs:
-  check-mosip-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: Verify mock-sdk-jpeg-extractor is available
-        run: |
-          mvn dependency:get \
-            -DgroupId=io.mosip.mock.sdk \
-            -DartifactId=mock-sdk-jpeg-extractor \
-            -Dversion=1.2.0.1-SNAPSHOT \
-            -Dclassifier=jar-with-dependencies \
-            -Dpackaging=jar \
-            -DrepoUrl=https://oss.sonatype.org/content/repositories/snapshots
-            
+jobs:           
   build-docker-artifactory-server:
-    needs: check-mosip-artifact
     strategy:
       matrix:
         include:
