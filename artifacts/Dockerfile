@@ -34,6 +34,12 @@ useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${cont
 && mkdir -p /var/run/nginx /var/tmp/nginx \
 && chown -R ${container_user}:${container_user} /usr/share/nginx /var/run/nginx /var/tmp/nginx
 
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+ENV MAVEN_HOME /usr/local/maven
+ENV PATH $MAVEN_HOME/bin:$PATH
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+
 RUN wget -O /tmp/mock-sdk-jpeg-extractor.jar "https://github.com/Dharanidharan-S-04/newrepoforgit/releases/download/v1.2.0.1/mock-sdk-jpeg-extractor-1.2.0.1-20231228.043631-25-jar-with-dependencies.jar" && \
     mvn install:install-file \
         -DgroupId=io.mosip.mock.sdk \
@@ -43,12 +49,6 @@ RUN wget -O /tmp/mock-sdk-jpeg-extractor.jar "https://github.com/Dharanidharan-S
         -Dpackaging=jar \
         -Dfile=/tmp/mock-sdk-jpeg-extractor.jar && \
     rm /tmp/mock-sdk-jpeg-extractor.jar
-
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-ENV MAVEN_HOME /usr/local/maven
-ENV PATH $MAVEN_HOME/bin:$PATH
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 # set working directory for the user
 WORKDIR /home/${container_user}
