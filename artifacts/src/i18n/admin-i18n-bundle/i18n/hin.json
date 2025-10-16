@@ -490,8 +490,11 @@
 			"message": "RID नहीं मिला",
 			"btnTxt": "ओके"
 		},
-		"statuscheckFailed": "विफल",
-		"statuscheckCompleted": "पूर्ण"
+		"statuscheckFailed": "असफल",
+		"statuscheckProcessed": "प्रक्रिया पूरी हुई",
+		"statuscheckInProgress": "प्रगति पर",
+		"statuscheckCompleted": "पूर्ण हुआ",
+		"statuscheckRejected": "अस्वीकृत"
 	},
 	"packet-upload": {
 		"header": "पैकेट अपलोड",
