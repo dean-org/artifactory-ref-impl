@@ -490,8 +490,11 @@
             "message": "لم يتم العثور على RID",
             "btnTxt": "حسنا"
         },
-        "statuscheckFailed":" فشل",
-        "statuscheckCompleted":"منجز"
+        "statuscheckFailed": "فشل",
+        "statuscheckProcessed": "تمت المعالجة",
+        "statuscheckInProgress": "قيد التقدم",
+        "statuscheckCompleted": "مكتمل",
+        "statuscheckRejected": "مرفوض"
     },
     "packet-upload":{
         "header":"تحميل الحزمة",
