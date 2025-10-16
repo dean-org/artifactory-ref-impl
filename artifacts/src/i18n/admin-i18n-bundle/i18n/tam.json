@@ -490,9 +490,11 @@
             "message": "RID கிடைக்கவில்லை",
             "btnTxt": "சரி"
         },
-        "statuscheckFailed": "தோல்வி",
-        "statuscheckCompleted": "நிறைவு"
-
+        "statuscheckFailed": "தோல்வியடைந்தது",
+        "statuscheckProcessed": "செயலாக்கப்பட்டது",
+        "statuscheckInProgress": "நடைபெற்று வருகிறது",
+        "statuscheckCompleted": "நிறைவடைந்தது",
+        "statuscheckRejected": "நிராகரிக்கப்பட்டது"
     },
     "packet-upload": {
         "header": "பாக்கெட் பதிவேற்றம்",
