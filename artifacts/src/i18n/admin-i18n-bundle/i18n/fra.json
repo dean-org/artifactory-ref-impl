@@ -516,7 +516,10 @@
 			"btnTxt": "D'accord"
 		},
 		"statuscheckFailed": "Échoué",
-		"statuscheckCompleted": "Terminé"
+		"statuscheckProcessed": "Traité",
+		"statuscheckInProgress": "En cours",
+		"statuscheckCompleted": "Terminé",
+		"statuscheckRejected": "Rejeté"
 	},
 	"packet-upload": {
 		"header": "Téléchargement de paquets",
