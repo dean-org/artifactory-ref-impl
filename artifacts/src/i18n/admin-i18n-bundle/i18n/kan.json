@@ -491,8 +491,10 @@
 			"btnTxt": "ಸರಿ"
 		},
 		"statuscheckFailed": "ವಿಫಲವಾಗಿದೆ",
-		"statuscheckCompleted": "ಪೂರ್ಣಗೊಂಡಿದೆ"
-
+		"statuscheckProcessed": "ಸಂಸ್ಕರಿಸಲಾಗಿದೆ",
+		"statuscheckInProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+		"statuscheckCompleted": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+		"statuscheckRejected": "ನಿರಾಕರಿಸಲಾಗಿದೆ"
 	},
 	"packet-upload": {
 		"header": "ಪ್ಯಾಕೆಟ್ ಅಪ್‌ಲೋಡ್",
