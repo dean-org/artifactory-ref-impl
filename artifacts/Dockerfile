@@ -28,7 +28,7 @@ apt-get update -y && \
 apt-get install -y --no-install-recommends unzip wget zip openjdk-11-jdk && \
 groupadd -g ${container_user_gid} ${container_user_group} &&\
 rm -rf /var/lib/apt/lists/* &&\
-wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz &&\
+wget https://archive.apache.org/dist/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz &&\
 tar -xzf apache-maven-3.8.8-bin.tar.gz && mv apache-maven-3.8.8 /usr/local/maven && rm apache-maven-3.8.8-bin.tar.gz &&\
 useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} \
 && mkdir -p /var/run/nginx /var/tmp/nginx \
@@ -39,6 +39,16 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 ENV MAVEN_HOME /usr/local/maven
 ENV PATH $MAVEN_HOME/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+
+RUN wget -O /tmp/mock-sdk-jpeg-extractor.jar "https://github.com/Dharanidharan-S-04/newrepoforgit/releases/download/v1.2.0.1/mock-sdk-jpeg-extractor-1.2.0.1-20231228.043631-25-jar-with-dependencies.jar" && \
+    mvn install:install-file \
+        -DgroupId=io.mosip.mock.sdk \
+        -DartifactId=mock-sdk-jpeg-extractor \
+        -Dversion=1.2.0.1-SNAPSHOT \
+        -Dclassifier=jar-with-dependencies \
+        -Dpackaging=jar \
+        -Dfile=/tmp/mock-sdk-jpeg-extractor.jar && \
+    rm /tmp/mock-sdk-jpeg-extractor.jar
 
 # set working directory for the user
 WORKDIR /home/${container_user}
@@ -128,8 +138,18 @@ ENV scripts_path=/home/mosip/scripts
 ENV version=1.2.1-SNAPSHOT
 ENV idp_auth_wrapper_version=0.0.1-SNAPSHOT
 
+# environment variable for registration-api-impl zip path
+ENV registration_api_impl_zip_path=${base_path}/libs-release-local/registration-client
+
+RUN mkdir -p /usr/share/nginx/html/artifactory/libs-release-local && \
+    wget -O /usr/share/nginx/html/artifactory/libs-release-local/zulu21.34.19-ca-fx-jre21.0.3-win_x64.zip \
+    https://github.com/Dharanidharan-S-04/newrepoforgit/releases/download/v1.3.x/zulu21.34.19-ca-fx-jre21.0.3-win_x64.zip
+
+# RUN wget -O  /usr/share/nginx/html/artifactory/libs-release-local/zulu21.34.19-ca-fx-jre21.0.3-win_x64.zip "https://github.com/Dharanidharan-S-04/newrepoforgit/releases/tag/v1.3.x/zulu21.34.19-ca-fx-jre21.0.3-win_x64.zip"
+
 # Create all the jar, i18n & theme paths.
-RUN mkdir -p ${biosdk_client_zip_path}/biosdk-client ${demosdk_zip_path}/demosdk ${biosdk_lib_zip_path}/biosdk-lib ${cache_path} ${ida_sh_path} ${hsm_client_path} ${mosip_plugins_zip_path} ${kernel_jar_path} ${test_jar_path} ${idobject_jar_path} ${regproc_jar_path} ${sdk_path} ${image_compressor_path}/image-compressor ${icu4j_jar_path} ${clamav_path} ${i18n_zip_path} ${theme_zip_path} ${image_zip_path} ${child_auth_filter_jar_path} ${base_path}/libs-release-local/reg-client ${scripts_path} ${master_template_path} ${jpeg_sdk_path} ${jpegsdk_lib_zip_path}/jpeg-sdk-lib/ ${idp_auth_wrapper_lib_zip_path} ${esignet_wrapper_lib_zip_path}/esignet-wrapper
+RUN mkdir -p ${biosdk_client_zip_path}/biosdk-client ${demosdk_zip_path}/demosdk ${biosdk_lib_zip_path}/biosdk-lib ${cache_path} ${ida_sh_path} ${hsm_client_path} ${mosip_plugins_zip_path} ${kernel_jar_path} ${test_jar_path} ${idobject_jar_path} ${regproc_jar_path} ${sdk_path} ${image_compressor_path}/image-compressor ${icu4j_jar_path} ${clamav_path} ${i18n_zip_path} ${theme_zip_path} ${image_zip_path} ${child_auth_filter_jar_path} ${base_path}/libs-release-local/reg-client ${scripts_path} ${master_template_path} ${jpeg_sdk_path} ${jpegsdk_lib_zip_path}/jpeg-sdk-lib/ ${idp_auth_wrapper_lib_zip_path} ${esignet_wrapper_lib_zip_path}/esignet-wrapper ${certify_plugin_zip_path}/certify-plugin ${registration_api_impl_zip_path}/registration-api-impl
+
 
 # Copy all the respective jars to the location
 
