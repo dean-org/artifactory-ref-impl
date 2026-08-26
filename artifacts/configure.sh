@@ -87,5 +87,5 @@ echo master-templates zip creation completed
 echo registration-api-impl zip creation started
 zip -r -j ${registration_api_impl_zip_path}/registration-api-impl.zip ${registration_api_impl_zip_path}/registration-api-impl/*
 rm -rf ${registration_api_impl_zip_path}/registration-api-impl
-echo registration-api-impl zip creation completed
+echo registration-api-impl zip creation completed 
 
