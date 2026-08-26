@@ -89,7 +89,17 @@
     "dob": "Enter DOB",
     "policyNumber_placeholder": "Policy Number",
     "fullName_placeholder": "Full Name",
-    "dob_placeholder": "DOB"
+    "dob_placeholder": "DOB",
+    "studentId": "Enter Student ID",
+    "studentId_placeholder": "Student ID",
+    "studentName": "Enter Student Name",
+    "studentName_placeholder": "Student Name",
+    "dateOfBirth": "Enter Date of Birth",
+    "dateOfBirth_placeholder": "Date of Birth",
+    "program": "Enter Program",
+    "program_placeholder": "Program",
+    "institutionName": "Enter Institution Name",
+    "institutionName_placeholder": "Institution Name"
   },
   "LoginQRCode": {
     "scan_with_wallet": "Scan with {{walletName}} to login",
